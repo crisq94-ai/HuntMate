@@ -1,0 +1,11 @@
+import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import { pl } from 'date-fns/locale';
+import type { Slot } from './types';
+export const zone = 'Europe/Warsaw';
+export const localDate = (date: string|Date = new Date()) => formatInTimeZone(date,zone,'yyyy-MM-dd');
+export const dateLabel = (date: string, pattern = 'd MMM, HH:mm') => formatInTimeZone(date,zone,pattern,{locale:pl});
+export const hours = (slots: Slot[]) => slots.reduce((sum,s)=>sum+(Date.parse(s.end)-Date.parse(s.start))/3600000,0);
+export const localSlot = (day:string,start:string,end:string): Slot => ({ start:fromZonedTime(`${day}T${start}:00`,zone).toISOString(),end:fromZonedTime(`${day}T${end}:00`,zone).toISOString() });
+export const normalized = (s:string) => s.trim().replace(/\s+/g,' ').toLocaleLowerCase('pl');
+export const overlaps = (a:Slot,b:Slot) => a.start < b.end && b.start < a.end;
+export const contains = (a:Slot,b:Slot) => a.start <= b.start && a.end >= b.end;

@@ -1,0 +1,14 @@
+{
+  "name": "huntmate-local", "version": "1.0.0", "private": true, "type": "module",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1", "build": "next build", "start": "next start --hostname 127.0.0.1", "start:render": "node scripts/start-render.mjs",
+    "db:init": "tsx scripts/database.ts", "db:reset": "tsx scripts/database.ts --reset",
+    "typecheck": "tsc --noEmit", "test": "vitest run", "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "^16.0.0", "react": "^19.2.0", "react-dom": "^19.2.0", "tailwindcss": "^4.0.0", "@tailwindcss/postcss": "^4.0.0",
+    "lucide-react": "^0.468.0", "@radix-ui/react-dialog": "^1.1.0", "zod": "^4.0.0", "date-fns": "^4.1.0", "date-fns-tz": "^3.2.0",
+    "@fontsource/inter": "^5.2.0", "@fontsource/manrope": "^5.2.0"
+  },
+  "devDependencies": { "typescript": "^5.9.0", "@types/node": "^22.18.0", "@types/react": "^19.2.0", "@types/react-dom": "^19.2.0", "tsx": "^4.20.0", "vitest": "^3.2.0", "@playwright/test": "^1.55.0" }
+}
